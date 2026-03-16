@@ -6,8 +6,8 @@ zotero:
 email:
   sender: ${oc.env:SENDER}
   receiver: ${oc.env:RECEIVER}
-  smtp_server: smtp.qq.com
-  smtp_port: 465
+  smtp_server: ${oc.env:SMTP_SERVER}
+  smtp_port: ${oc.env:SMTP_PORT}
   sender_password: ${oc.env:SENDER_PASSWORD}
 
 llm:
@@ -15,12 +15,15 @@ llm:
     key: ${oc.env:OPENAI_API_KEY}
     base_url: ${oc.env:OPENAI_API_BASE}
   generation_kwargs:
-    model: gpt-4o-mini
+    model: deepseek-reasoner
+  language: Chinese # Preferred language for the TL;DR. Example: English
 
 source:
   arxiv:
-    category: ["cs.AI","cs.CV","cs.LG","cs.CL"]
+    category: ["cond-mat.strl-el"]
+    include_cross_list: true # Set to true to include arXiv cross-list papers in these categories.
 
 executor:
-  debug: ${oc.env:DEBUG,null}
+  debug: true # Whether to use debug mode. Example: true
+  send_empty: false # Whether to send an empty email even if no new papers today. Example: true
   source: ['arxiv']
