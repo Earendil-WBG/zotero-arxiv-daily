@@ -6,8 +6,8 @@ zotero:
 email:
   sender: ${oc.env:SENDER}
   receiver: ${oc.env:RECEIVER}
-  smtp_server: ${oc.env:SMTP_SERVER}
-  smtp_port: ${oc.env:SMTP_PORT}
+  smtp_server: smtp.qq.com
+  smtp_port: 465
   sender_password: ${oc.env:SENDER_PASSWORD}
 
 llm:
@@ -20,7 +20,7 @@ llm:
 
 source:
   arxiv:
-    category: ["cond-mat.strl-el"]
+    category: ["cond-mat.str-el"]
     include_cross_list: true # Set to true to include arXiv cross-list papers in these categories.
 
 executor:
